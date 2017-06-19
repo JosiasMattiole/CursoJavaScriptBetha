@@ -7,7 +7,7 @@ var modelo = new Schema({
         required: [true, 'Obrigatório informar o nome!']
     },
     idade:{
-        type: Intl,
+        type: Number,
         required: [true, 'Obrigatório informar a idade!']
     }
 });
