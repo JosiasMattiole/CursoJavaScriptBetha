@@ -9,7 +9,7 @@ module.exports = function(app){
             }, function(erro){
                 resp.status(500).json(erro);
             });
-    })
+    });
 
     app.post('/api/alunos', function(req, resp){
         alunosModel.create(req.body)
@@ -17,16 +17,26 @@ module.exports = function(app){
                 console.log('Aluno inserido com sucesso!')
                 resp.json(dado);
             }, function(erro){
+                console.log('Erro:', erro)
                 resp.status(500).json(erro);
             });
-    })
+    });
+
+    app.put('/api/alunos/:idade', function(req, resp){
+        alunosModel.findByIdAndUpdate(req.params.idade, req.body, {new: true, runValidators: true})
+            .then(function(dado){
+                resp.json(dado)
+            }, function(erro){
+                resp.status(500).json(erro);
+            });
+    });
 
     app.get('/api/alunos/:idade', function(req, resp){
-        alunosModel.findById(req.params.idade)
+        alunosModel.find({idade: req.params.idade})
             .then(function(data){
                 resp.json(data);
             }, function(erro){
                 resp.status(500).json(erro);
             });
-    })
+    });
 }
