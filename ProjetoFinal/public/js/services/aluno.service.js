@@ -23,20 +23,22 @@
       return $http.get(URL, { params: { filter: JSON.stringify(query) } });
     }
 
-    function findById(idade) {
-      return $http.get(URL + '/' + idade);
+    function findById(id) {
+      return $http.get(URL + '/' + id);
     }
 
     function save(record) {
-      if (record.id) {
-        return $http.put(URL + '/' + record.id, record);
+      if (record._id) {
+        console.log("Entrou no PUT!!")
+        return $http.put(URL + '/' + record._id, record);
       } else {
+        console.log("Entrou no POST!!")
         return $http.post(URL, record);
       }
     }
 
-    function remove(idade) {
-      return $http.delete(URL + '/' + idade);
+    function remove(id) {
+      return $http.delete(URL + '/' + id);
     }
   }
 })();
