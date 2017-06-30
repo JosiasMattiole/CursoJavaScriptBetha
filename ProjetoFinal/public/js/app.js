@@ -7,22 +7,28 @@
 
   function AppConfig($routeProvider) {
     $routeProvider
-      //Para a rota '/', carregar main.html
       .when('/', {
         templateUrl: 'partials/main.html',
         controller: 'MainController',
         controllerAs: 'vm'
       })
-      //Para a rota '/alunos/new' carregar alunos-form.html e o controller aluno.controller.js
-      .when('/alunos/new', {
-        templateUrl: 'partials/alunos-form.html',
-        controller: 'AlunoController',
+      .when('/alunos', {
+        templateUrl: 'partials/aluno-list.html',
+        controller: 'AlunoListController',
         controllerAs: 'vm'
       })
-      .when('/alunos/:idade', {
-        templateUrl: 'partials/alunos-form.html',
-        controller: 'AlunoController',
+      .when('/alunos/new', {
+        templateUrl: 'partials/aluno-form.html',
+        controller: 'AlunoFormController',
         controllerAs: 'vm'
+      })
+      .when('/alunos/:id', {
+        templateUrl: 'partials/aluno-form.html',
+        controller: 'AlunoFormController',
+        controllerAs: 'vm'
+      })
+      .when('/sobre', {
+        templateUrl: 'partials/sobre.html'
       })
       .otherwise('/');
   }

@@ -3,17 +3,16 @@
 
   angular
     .module('app')
-    .controller('AlunoController', AlunoController);
+    .controller('AlunoFormController', AlunoFormController);
 
-  AlunoController.$inject = ['AlunoService', '$location', '$routeParams'];
+  AlunoFormController.$inject = ['AlunoService', '$location', '$routeParams'];
 
-  function AlunoController(AlunoService, $location, $routeParams) {
+  function AlunoFormController(AlunoService, $location, $routeParams) {
     var vm = this;
     vm.aluno = {};
     vm.titulo = 'Novo Aluno';
 
     vm.salvar = salvar;
-    //vm.remover = remover;
 
     activate();
 
@@ -22,7 +21,7 @@
         AlunoService.findById($routeParams.id)
           .success(function (data) {
             vm.aluno = data;
-            vm.titulo = 'Editando Pedido';
+            vm.titulo = 'Editando Aluno';
           });
       }
     }
@@ -34,11 +33,11 @@
         });
     }
 
-//    function remover(item) {
-      //if (!confirm('Deseja realmente excluir?'))
-//        return;
-  //    var pos = vm.alunos.indexOf(item);
-    //  vm.alunos.splice(pos, 1);
-    //}
+    function remover() {
+      AlunoService.remove(vm.aluno.id)
+        .success(function(){
+          $location.path('/alunos');
+        });
+    }
   }
 })();
