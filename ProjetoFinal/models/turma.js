@@ -10,10 +10,10 @@ var modelo = new Schema({
         type: String,
         required: [true, 'Obrigatório informar a descrição da turma!']
     },
-    aluno:{
+    aluno:[{
         type: Schema.Types.ObjectId,
         ref: 'alunos'
-    }
+    }]
 });
 
 mongoose.model('turmas', modelo);

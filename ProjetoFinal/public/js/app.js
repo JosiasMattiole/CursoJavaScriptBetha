@@ -27,6 +27,21 @@
         controller: 'AlunoFormController',
         controllerAs: 'vm'
       })
+      .when('/turmas', {
+        templateUrl: 'partials/turma-list.html',
+        controller: 'TurmaListController',
+        controllerAs: 'vm'
+      })
+      .when('/turmas/new', {
+        templateUrl: 'partials/turma-form.html',
+        controller: 'TurmaFormController',
+        controllerAs: 'vm'
+      })
+      .when('/turmas/:id', {
+        templateUrl: 'partials/turma-form.html',
+        controller: 'TurmaFormController',
+        controllerAs: 'vm'
+      })
       .when('/sobre', {
         templateUrl: 'partials/sobre.html'
       })
